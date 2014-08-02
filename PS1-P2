@@ -6,20 +6,25 @@ annualInterest = float(raw_input('Enter the annual interest rate as a decimal: '
 payment = int(10)
 thisBalance = balance
 monthlyInterest = float(0.0)
-month = 1
+month = 0
 
 while thisBalance >= 0:
     while month < 12:
+        if thisBalance < 0:
+            break
         monthlyInterest = ((annualInterest/12)*thisBalance)
         thisBalance += monthlyInterest
         thisBalance = thisBalance - payment
         month += 1
+        ##print "interest ", monthlyInterest, "balance ", thisBalance, "month ", month
 
     if thisBalance > 0:
         thisBalance = balance
-        month = 1
+        month = 0
         payment +=10
     else:
         break
     
 print "Minimum payment is ", payment, "final balance is ", thisBalance, "it took ", month, "months."
+    
+
