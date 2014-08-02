@@ -1,0 +1,25 @@
+##How to pay off your credit card
+
+balance = float(raw_input('Enter the outstanding balance: '))
+annualInterest = float(raw_input('Enter the annual interest rate as a decimal: '))
+
+payment = int(10)
+thisBalance = balance
+monthlyInterest = float(0.0)
+month = 1
+
+while thisBalance >= 0:
+    while month < 12:
+        monthlyInterest = ((annualInterest/12)*thisBalance)
+        thisBalance += monthlyInterest
+        thisBalance = thisBalance - payment
+        month += 1
+
+    if thisBalance > 0:
+        thisBalance = balance
+        month = 1
+        payment +=10
+    else:
+        break
+    
+print "Minimum payment is ", payment, "final balance is ", thisBalance, "it took ", month, "months."
